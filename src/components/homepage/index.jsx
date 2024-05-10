@@ -26,12 +26,6 @@ const HomePageComponent = () => {
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
 
   useEffect(() => {
-    setTimeout(()=>{
-      setIsPlayingMusic(true);
-    }, 2000);
-  }, []);
-
-  useEffect(() => {
     if (isRotating) {
       propellAudioRef.current.play();
     } 
