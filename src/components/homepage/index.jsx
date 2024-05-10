@@ -79,7 +79,7 @@ const HomePageComponent = () => {
 
   return (
     <Suspense>
-      <section className="w-full h-screen relative">
+      <section className={`w-full h-[94vh] relative`}>
         <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
           {currentStage && <HomeInfo currentStage={currentStage} />}
         </div>
@@ -125,7 +125,7 @@ const HomePageComponent = () => {
           </Suspense>
         </Canvas>
 
-        <div className="absolute bottom-2 left-2">
+        <div className="absolute lg:bottom-2 left-2 bottom-4">
           <Image
             width={16}
             height={16}
