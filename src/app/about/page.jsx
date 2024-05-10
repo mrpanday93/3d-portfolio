@@ -72,7 +72,7 @@ const About = () => {
         <div className="mt-16 flex flex-wrap gap-12">
           {skills.map((skill) => (
             <div
-              className="block-container w-20 h-20 cursor-pointer"
+              className="block-container w-12 h-12 md:w-20 md:h-20 cursor-pointer"
               key={skill.name}
               title={skill.name}
             >
@@ -132,7 +132,7 @@ const About = () => {
                     }}
                   >
                     <div>
-                      <h3 className="text-black text-xl font-poppins font-semibold">
+                      <h3 className="text-black subhead-text">
                         {experience.title}
                       </h3>
                       <p
