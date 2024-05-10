@@ -47,7 +47,7 @@ const Projects = () => {
 
             <div className="flex flex-col p-0 m-0">
               <h4 className="font-poppins project-heading flex flex-row gap-5 justify-center px-5 py-2.5 rounded-3xl text-center ">
-                {project.link ? (
+                {/* {project.link ? (
                   <Link
                     href={project.link}
                     target="_blank"
@@ -63,9 +63,9 @@ const Projects = () => {
                       className="hover:scale-110 transition ease-in-out delay-50 hover:-translate-y-1 duration-300"
                     />
                   </Link>
-                ) : (
+                ) : ( */}
                   <span>{project.name} </span>
-                )}
+                {/* )} */}
               </h4>
               <p className="mt-2 text-slate-500">{project.description}</p>
               <p className="flex flex-col gap-3 mt-2 cursor-pointer text-slate-500">
