@@ -13,39 +13,41 @@ import Sky from "@/models/Sky";
 import dynamic from "next/dynamic";
 
 const HomePageComponent = () => {
-  const audioRef = useRef(new Audio(`/assets/african-inspiration.mp3`));
-  audioRef.current.volume = 0.5;
-  audioRef.current.loop = true;
+  const bgMusicAudioRef = useRef(new Audio(`/assets/african-inspiration.mp3`));
+  bgMusicAudioRef.current.volume = 0.5;
+  bgMusicAudioRef.current.loop = true;
 
-  const audioRef2 = useRef(new Audio(`/assets/propellerwav.mp3`));
-  audioRef2.current.volume = 0.25;
-  audioRef2.current.loop = true;
+  const propellAudioRef = useRef(new Audio(`/assets/propellerwav.mp3`));
+  propellAudioRef.current.volume = 0.25;
+  propellAudioRef.current.loop = true;
 
   const [currentStage, setCurrentStage] = useState(1);
   const [isRotating, setIsRotating] = useState(false);
-  const [isPlayingMusic, setIsPlayingMusic] = useState(true);
+  const [isPlayingMusic, setIsPlayingMusic] = useState(false);
 
   useEffect(() => {
-    setIsPlayingMusic(true);
+    setTimeout(()=>{
+      setIsPlayingMusic(true);
+    }, 2000);
   }, []);
 
   useEffect(() => {
     if (isRotating) {
-      audioRef2.current.play();
+      propellAudioRef.current.play();
     } 
 
     return () => {
-      audioRef2.current.pause();
+      propellAudioRef.current.pause();
     };
   }, [isRotating]);
 
   useEffect(() => {
     if (isPlayingMusic) {
-      audioRef.current.play();
+      bgMusicAudioRef.current.play();
     }
 
     return () => {
-      audioRef.current.pause();
+      bgMusicAudioRef.current.pause();
     };
   }, [isPlayingMusic]);
 
