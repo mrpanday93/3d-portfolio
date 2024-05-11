@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} bg-slate-200/20`}>
         <Header />
-        <main className="w-full min-h-[90vh]">
+        <main className="w-full min-h-[90vh] lg:h-screen">
           {children}
         </main>
         <Footer />
