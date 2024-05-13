@@ -4,7 +4,8 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import Loader from "@/components/loader";
 import emailJS from "@emailjs/browser";
-
+import useAlert from "@/hooks/useAlert";
+import Alert from "@/components/alert";
 
 const Contact = (props) => {
   const [form, setForm] = useState({
@@ -13,7 +14,7 @@ const Contact = (props) => {
     message: "",
   });
 
-  // const { alert, showAlert, hideAlert } = useAlert();
+  const { alert, showAlert, hideAlert } = useAlert();
   const [currentAnimation, setCurrentAnimation] = useState("idle");
 
   const [isLoading, setIsLoading] = useState(false);
@@ -39,11 +40,31 @@ const Contact = (props) => {
     },process.env.NEXT_PUBLIC_EJS_PUBLIC_KEY).then(() => {
       setIsLoading(false);
       setCurrentAnimation("idle");
-      console.log("OK");
+      showAlert({
+        show: true,
+        text: "Something went wrong. Try again 😃",
+        type: "success",
+      });
+
+      setTimeout(() => {
+        hideAlert(false);
+        setCurrentAnimation("idle");
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+      }, [3000]);
+
     }).catch((e) => {
       setIsLoading(false);
       setCurrentAnimation("idle");
-      console.log("FAILED", e);
+
+      showAlert({
+        show: true,
+        text: "I didn't receive your message 😢",
+        type: "danger",
+      });
     });      
   };
 
@@ -52,6 +73,7 @@ const Contact = (props) => {
 
   return (
     <section className="relative flex lg:flex-row flex-col max-container">
+       {alert.show && <Alert {...alert} />}
       <div className="flex-1 min-w-[50%] flex flex-col">
         <h1 className="head-text">Get in touch</h1>
         <form
